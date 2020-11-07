@@ -17,7 +17,7 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Spacer()
-            Text("Total")
+            Text("$")
                 .font(.system(size: 30))
             Spacer()
             
