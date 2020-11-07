@@ -8,40 +8,45 @@
 
 import SwiftUI
 
-struct BitCoin: Decodable {
-    let buy: Double
-    let symbol: String
-}
-
-typealias BitCoinData = [String : BitCoin]
-
 // Observable object makes the class observable
 class Api: ObservableObject {
     
     // Published is whenever something changes, it notifies all of the listeners
     @Published var currencyCode: [String] = []
     @Published var buyingPrice: [Double] = []
+    @Published var symbolArray: [String] = []
     
     init() {
-        self.fetchData()
+        fetchCryptoData { (bitcoin) in
+            switch bitcoin {
+            case .success(let currency):
+                currency.forEach { (currencies) in
+                    DispatchQueue.main.async {
+                        self.currencyCode.append(currencies.key)
+                        self.symbolArray.append(currencies.value.symbol)
+                        self.buyingPrice.append(currencies.value.buy)
+                    }
+                }
+            case .failure(let error):
+                print("Failed to fetch courses", error)
+            }
+        }
     }
     
-    func fetchData() {
-        guard let url = URL(string: "https://www.blockchain.info/ticker") else { return }
+    func fetchCryptoData(completion: @escaping (Result<Bitcoin, Error>) -> ()) {
+        guard let url = URL(string: "https://blockchain.info/ticker") else { return }
         URLSession.shared.dataTask(with: url) { (data, response, error) in
-            if error == nil {
-                guard let safeData = data else { return }
-                do {
-                    let bitcoin = try JSONDecoder().decode(BitCoinData.self, from: safeData)
-                    for (key, value) in bitcoin {
-                        DispatchQueue.main.async {
-                            self.currencyCode.append(key)
-                            self.buyingPrice.append(value.buy)
-                        }
-                    }
-                } catch {
-                    print(error)
-                }
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            guard let safeData = data else { return }
+            
+            do {
+                let bitcoin = try JSONDecoder().decode(Bitcoin.self, from: safeData)
+                completion(.success(bitcoin))
+            } catch let jsonError {
+                completion(.failure(jsonError))
             }
         }.resume()
     }
@@ -49,6 +54,6 @@ class Api: ObservableObject {
 
 struct API_Previews: PreviewProvider {
     static var previews: some View {
-        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
+        Text("Hello, World!")
     }
 }

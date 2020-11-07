@@ -24,13 +24,15 @@ struct ContentView: View {
             TextField("Enter Amount:", text: $amount)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .keyboardType(.decimalPad)
+                .padding()
             
             Picker("", selection: $pickerSelection) {
-                    ForEach(self.api.currencyCode, id: \.self) { currency in
-                        Text(currency)
-                    }
-            }.id(UUID())
-                .labelsHidden()
+                ForEach(api.currencyCode, id: \.self) { currency in
+                    Text(currency)
+                }
+            }
+            .id(UUID())
+            .labelsHidden()
         }.padding()
     }
 }

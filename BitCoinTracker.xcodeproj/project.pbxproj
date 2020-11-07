@@ -13,6 +13,7 @@
 		5C4BE3B525070E430070F351 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C4BE3B425070E430070F351 /* Assets.xcassets */; };
 		5C4BE3B825070E430070F351 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C4BE3B725070E430070F351 /* Preview Assets.xcassets */; };
 		5C4BE3BB25070E430070F351 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C4BE3B925070E430070F351 /* LaunchScreen.storyboard */; };
+		5C5B95022556200700E36F25 /* BitcoinData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5B95012556200700E36F25 /* BitcoinData.swift */; };
 		5CC09D5825082D8100BE720B /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC09D5725082D8100BE720B /* API.swift */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +26,7 @@
 		5C4BE3B725070E430070F351 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5C4BE3BA25070E430070F351 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5C4BE3BC25070E430070F351 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5C5B95012556200700E36F25 /* BitcoinData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinData.swift; sourceTree = "<group>"; };
 		5CC09D5725082D8100BE720B /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -62,6 +64,7 @@
 				5C4BE3B025070E420070F351 /* SceneDelegate.swift */,
 				5C4BE3B225070E420070F351 /* ContentView.swift */,
 				5CC09D5725082D8100BE720B /* API.swift */,
+				5C5B95012556200700E36F25 /* BitcoinData.swift */,
 				5C4BE3B425070E430070F351 /* Assets.xcassets */,
 				5C4BE3B925070E430070F351 /* LaunchScreen.storyboard */,
 				5C4BE3BC25070E430070F351 /* Info.plist */,
@@ -105,7 +108,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1170;
-				LastUpgradeCheck = 1170;
+				LastUpgradeCheck = 1210;
 				ORGANIZATIONNAME = "Enrique Gongora";
 				TargetAttributes = {
 					5C4BE3AA25070E420070F351 = {
@@ -151,6 +154,7 @@
 			files = (
 				5C4BE3AF25070E420070F351 /* AppDelegate.swift in Sources */,
 				5C4BE3B125070E420070F351 /* SceneDelegate.swift in Sources */,
+				5C5B95022556200700E36F25 /* BitcoinData.swift in Sources */,
 				5C4BE3B325070E420070F351 /* ContentView.swift in Sources */,
 				5CC09D5825082D8100BE720B /* API.swift in Sources */,
 			);
@@ -196,6 +200,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -256,6 +261,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
