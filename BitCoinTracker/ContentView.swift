@@ -13,28 +13,22 @@ struct ContentView: View {
     @ObservedObject var api = Api()
     @State private var pickerSelection = 0
     @State private var amount: String = ""
-    var currencyCode = ""
     
     var total: Double {
-        // Use the index of the picker selection
         guard api.buyingPrice.count > 0 else {
             return 0
         }
-        
         let buyingPrice = api.buyingPrice[pickerSelection]
-        
         let amountInDouble = Double(amount) ?? 0.0
-        
-        let returnTotal = buyingPrice * amountInDouble
-        return returnTotal
+        let totalAmount = buyingPrice * amountInDouble
+        return totalAmount
     }
     
-    // Do the same type of guard statement for the symbol to ensure we have data.
     var symbol: String {
-        var currentSymbol = ""
-        for symbols in api.symbolArray {
-            currentSymbol = symbols
+        guard api.symbolArray.count > 0 else {
+            return ""
         }
+        let currentSymbol = api.symbolArray[pickerSelection]
         return currentSymbol
     }
     
@@ -43,7 +37,9 @@ struct ContentView: View {
             Spacer()
             Text("\(symbol)\(total, specifier: "%.2f")")
                 .font(.system(size: 30))
+            
             Spacer()
+            
             TextField("Enter Amount:", text: $amount)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .keyboardType(.decimalPad)
